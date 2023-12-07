@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Playfair+Display:wght@700&family=Poppins:wght@500&family=Work+Sans:wght@300&display=swap');
+
+:root{
+  background-color: black;
+}
+
+body{
+  background-color: white;
+  font-family: 'Montserrat', sans-serif;
+}

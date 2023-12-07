@@ -1,0 +1,45 @@
+/* Login.css */
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f2f2f2c9; /* Light gray background color for the entire body */
+}
+
+.form {
+    background-color: #ffffff; /* Teal color for the form background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.input {
+    width: 100%;
+    margin-bottom: 15px;
+    background-color: #ffffff; /* Dark gray background color for the input fields */
+    color: white !important;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.button {
+    width: 100%;
+    background-color: #008080; /* Teal color for the button background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #006666; /* Darker teal color on hover */
+}
