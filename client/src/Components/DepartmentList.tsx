@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styles from "../styles/DepartmentList.module.css";
 
 interface Department {
   department: string;
@@ -19,7 +20,6 @@ const departments: Department[] = [
 const DepartmentList: React.FC = () => {
   const [selectedDepartments, setSelectedDepartments] = useState<string[]>([]);
   const [selectedSubDepartments, setSelectedSubDepartments] = useState<string[]>([]);
-  const [expandedDepartments, setExpandedDepartments] = useState<string[]>([]);
 
   const handleDepartmentSelect = (department: string) => {
     let selectedDeps = [...selectedDepartments];
@@ -58,44 +58,33 @@ const DepartmentList: React.FC = () => {
     setSelectedDepartments(newSelectedDepartments);
   };
 
-  const handleExpansionToggle = (department: string) => {
-    setExpandedDepartments((prevDepartments) =>
-      prevDepartments.includes(department)
-        ? prevDepartments.filter((dep) => dep !== department)
-        : [...prevDepartments, department]
-    );
-  };
-
   return (
-    <ul style={{ listStyle: "none", padding: 0 }}>
+    <ul className={styles.outer}>
       {departments.map((department) => (
         <li key={department.department}>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <span
-              style={{ cursor: "pointer", marginRight: "5px" }}
-              onClick={() => handleExpansionToggle(department.department)}
-            >
-              {expandedDepartments.includes(department.department) ? "▼ " : "► "}
-            </span>
-            <input
-              type="checkbox"
-              checked={selectedDepartments.includes(department.department)}
-              onChange={() => handleDepartmentSelect(department.department)}
-            />
-            {department.department}
-          </div>
-          <ul style={{ listStyle: "none", marginLeft: "20px", display: expandedDepartments.includes(department.department) ? "block" : "none" }}>
-            {department.sub_departments.map((subDepartment) => (
-              <li key={subDepartment}>
-                <input
-                  type="checkbox"
-                  checked={selectedSubDepartments.includes(subDepartment)}
-                  onChange={() => handleSubDepartmentSelect(subDepartment)}
-                />
-                {subDepartment}
-              </li>
-            ))}
-          </ul>
+            <details>
+                <summary>
+                    <h2>›</h2>
+                    <input
+                        type="checkbox"
+                        checked={selectedDepartments.includes(department.department)}
+                        onChange={() => handleDepartmentSelect(department.department)}
+                    />
+                    {department.department.split("_").join(" ")}
+                </summary>
+                <ul className={styles.inner}>
+                    {department.sub_departments.map((subDepartment) => (
+                    <li key={subDepartment}>
+                        <input
+                        type="checkbox"
+                        checked={selectedSubDepartments.includes(subDepartment)}
+                        onChange={() => handleSubDepartmentSelect(subDepartment)}
+                        />
+                        {subDepartment.split("_").join(" ")}
+                    </li>
+                    ))}
+                </ul>
+            </details>
         </li>
       ))}
     </ul>

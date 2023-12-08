@@ -1,18 +1,19 @@
-// Login.tsx
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/Login.css';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [formData, setFormData] = useState({
     name: '',
     phoneNumber: '',
     email: '',
   });
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prevData) => ({
@@ -22,13 +23,8 @@ const Login: React.FC = () => {
   };
 
   const handleSubmit = () => {
-    // Validate the form data here if needed
-    // ...
-
-    // Store user details in local storage
     localStorage.setItem('userData', JSON.stringify(formData));
 
-    // Navigate to the Departments page
     navigate('/departments');
   };
 
@@ -43,6 +39,9 @@ const Login: React.FC = () => {
     >
       <div className='form'>
         <h1>Enter Details</h1>
+        <p style={{color: 'red'}}>{
+          location.state && location.state.redirectMessage
+        }</p>
         <TextField
           required
           id="outlined-required"

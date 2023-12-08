@@ -1,0 +1,59 @@
+ul.outer, ul.inner {
+  list-style-type: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+ul.outer {
+  margin-top: 1.5rem;
+  padding: 0;
+  gap: 1rem;
+}
+
+ul.outer li {
+    position: relative;
+    padding-left: 1rem;
+}
+
+ul.outer h2{
+    margin-right: 0.5rem;
+    position: absolute;
+    left: 0;
+    top: -1.6rem;
+    color: #000;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+
+ul.outer li:has(details[open]) h2{
+    transform: rotate(90deg);
+}
+
+ul.outer li, ul.inner li {
+  display: flex;
+  flex-direction: row;
+  gap: 0.7rem;
+  align-items: center;
+  text-transform: capitalize;
+}
+
+ul.inner {
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+}
+
+ul.outer li summary {
+  display: flex;
+  gap: 0.7rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+ul.outer li input[type="checkbox"] {
+  width: 0.9rem;
+  height: 0.9rem;
+  accent-color: #000;
+}
