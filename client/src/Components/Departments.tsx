@@ -35,14 +35,14 @@ const Departments: React.FC = () => {
 
   return (
     <div>
-      <h1>Departments</h1>
       <DataGrid
         rows={departmentData}
         columns={columns}
         pagination
         paginationMode="server"
         style={{ height: 315, width: '50rem', backgroundColor: 'white' }}
-      />
+        />
+      <h2>Departments</h2>
       <DepartmentList />
     </div>
   );
